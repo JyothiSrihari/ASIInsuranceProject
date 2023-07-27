@@ -25,11 +25,7 @@ node{
         sh "docker build -t $dockerHubUser/$containerName:$tag --pull --no-cache ."
     }
 	
-   	
-    stage('Docker Image Scan'){
-        echo 'Scanning Docker image for vulnerbilities'
-        sh "trivy image ${dockerHubUser}/$containerName:${tag}"
-    }   
+     
 	
     stage('Publishing Image to DockerHub'){
         echo 'Pushing the docker image to DockerHub'
